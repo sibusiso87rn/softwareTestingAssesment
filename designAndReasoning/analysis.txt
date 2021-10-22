@@ -1,0 +1,79 @@
+1. Given the above high level requirements, what are some of the questions you would ask each of following team members to understand this feature better?
+
+Product Owner - Questions
+
+- For the product owner the main aim is to get the acceptance criteria for the feature(s) and ask product related questions.
+  This is will also help expose any other hidden requirement that might have been missed that might need to be added as user stories later on ?
+
+    - "The client administrator having the ability to manage their own standard users", does this mean we have multiple administrators for different departments ?
+
+    - If yes, can one department have more than one administrator ?
+
+    - Audit, what are the audit requirements for this system or are they already taken care off ?
+
+  -- Licenses
+
+    - How many different type of licenses do we have ? What type of users do we have ? Can a user occupy more than one license ?
+
+    - Do the admins have a different license base or they share the same scheme as other users ?
+
+    - What happens when there no more licenses ? Can the admin remove one license from one user and allocate to someone else ?
+
+    - Do licenses have time constrains for licenses (Are they permanent, do they expire and need to renewed, what about guest users)
+
+  -- Functionality
+
+    - What fields are visible and editable for user details, which ones are not ? Does the user get notified if their info is edited/updated ?
+
+    - Can an admin remove other admins ?
+
+    - Upon a successful Add,Edit and Remove where does the user get navigated to.
+
+  -- Priority
+
+    - What is the priority for all these stories ?
+
+
+UX Designer - Questions
+
+- For the UX, I would go through the flow with them and ask questions regarding the following
+
+ -- Navigation
+
+    - What are is the flow for the Add, Edit and Remove Users story. Essentially get read access to Figma or Protopie and go through the flow with them.
+
+    - Edge cases for when there a no licenses or there's is an expected error or missing fields ?
+
+    - Are there any UX design guidelines that we reference for our Usability Testing ?
+
+Technical Architect - Questions
+
+- What platform is this system running on (backend, frontend and database ?
+
+- What is the technology stack for the above mentioned ?
+
+- Where is the high-level data flow diagram for all of these features and application architecture?
+
+- Are there any other systems we are interfacing with or dependent on ?
+
+- Are there any limitations that might prevent us from having test environment to be production-like ?
+
+2. In order to delight the user with these features, how would you want it to work?
+
+  - Given the user has a valid password and admin credentials.
+
+  - Upon a successful logon they would be displayed a summary dashboard with the use-count (groups) and the licenses they occupy. And summary view of available licenses.
+
+  - They would have a user tab, where they can view all users, search, select and be navigated to edit user information and either assign a or remove an allocated license.
+
+  - Upon a successful user removal, the new license count get displayed on the dashboard.
+
+  - They would also have a licenses tab, where they can view all licenses (grouped by category).
+
+  - They could select a license group, search or view all users assigned to the license group, remove a license allocation for a selected user. Or be able to assign a license from there.
+
+  - Able to grant and allocate a temporary license that expires on the specified time.
+
+3.Based on your response to the previous question what would you automate in the testing of this feature?
+
+ - End to end flows for logon -> search user -> select user-> search for lince
