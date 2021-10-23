@@ -76,4 +76,12 @@ Technical Architect - Questions
 
 3.Based on your response to the previous question what would you automate in the testing of this feature?
 
- - End to end flows for logon -> search user -> select user-> search for lince
+ - End to end flows for [Add User,Remove User and Edit Details] for positive flows.
+
+ - Security tests around non-administrators not being able to log on or view features that they're not supposed to see.
+
+ - Negative flows for assigning licenses to (removed users, non existing users).
+
+ - Boundary tests around license availability.
+
+ - Field validations for edit details feature and all mandatory fields.
