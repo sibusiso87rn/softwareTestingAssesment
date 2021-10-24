@@ -1,0 +1,17 @@
+node{
+
+    // Add maven to path
+    env.PATH = "/opt/maven3/bin/:$PATH"
+
+     stage('Git Clone/Pull'){
+        git branch: 'main',
+			url: 'https://github.com/sibusiso87rn/softwareTestingAssesment.git'
+    }
+
+
+    stage('Maven build') {
+        buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+    }
+
+
+}
