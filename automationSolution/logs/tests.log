@@ -3366,3 +3366,108 @@ Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Ap
 2021-10-23 14:51:18,980 8954 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
 2021-10-23 14:51:18,980 8954 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - Taking screenshot for scenario [User wants to shop]
 2021-10-23 14:51:20,979 10953 [32m[main][0;39m [34mINFO [0;39m co.za.testing.core.reporter.CucumberReport - ******************Building Report******************
+2021-10-24 08:27:26,298 610  [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.WebTestRunner - Test suit starting
+2021-10-24 08:27:26,326 638  [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.WebDriverFactory - WebDriver factory is instance is null, creating new instance
+2021-10-24 08:27:27,254 1566 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
+2021-10-24 08:27:27,255 1567 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - User wants to shop - Status - PASSED
+2021-10-24 08:27:27,256 1568 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
+2021-10-24 08:27:27,256 1568 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.WebDriverFactory - Creating thread local driver
+2021-10-24 19:09:10,357 249  [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.WebTestRunner - Test suit starting
+2021-10-24 19:09:10,361 253  [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.WebDriverFactory - WebDriver factory is instance is null, creating new instance
+2021-10-24 19:09:11,135 1027 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
+2021-10-24 19:09:11,136 1028 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - User wants to shop - Status - PASSED
+2021-10-24 19:09:11,137 1029 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
+2021-10-24 19:09:11,137 1029 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.WebDriverFactory - Creating thread local driver
+2021-10-24 19:09:15,492 5384 [32m[TestNG][0;39m [34mINFO [0;39m io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 94.0.4606.61 (resolved driver for Chrome 94)
+2021-10-24 19:09:15,531 5423 [32m[TestNG][0;39m [34mINFO [0;39m io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as /Users/sibusisoradebe/.cache/selenium/chromedriver/mac64/94.0.4606.61/chromedriver
+2021-10-24 19:09:20,403 10295 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:20,404 10296 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[LogInPage]
+2021-10-24 19:09:20,440 10332 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Waiting for page to load
+2021-10-24 19:09:20,523 10415 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:20,524 10416 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[LogInPage]
+2021-10-24 19:09:20,524 10416 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Validate if we are on the login screen
+2021-10-24 19:09:20,597 10489 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:20,597 10489 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[LogInPage]
+2021-10-24 19:09:20,598 10490 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - About to log on user, using Username [standard_user] and Password [secret_sauce]
+2021-10-24 19:09:20,598 10490 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Enter username standard_user
+2021-10-24 19:09:20,628 10520 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Executing Input Text on element [[ChromeDriver: chrome on MAC (a823ebd487a3de0a0ed02baa40bd454d)] -> id: user-name]
+2021-10-24 19:09:20,814 10706 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Enter password secret_sauce
+2021-10-24 19:09:20,825 10717 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Executing Input Text on element [[ChromeDriver: chrome on MAC (a823ebd487a3de0a0ed02baa40bd454d)] -> id: password]
+2021-10-24 19:09:20,921 10813 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:20,922 10814 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[LogInPage]
+2021-10-24 19:09:20,923 10815 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - About to click the login button
+2021-10-24 19:09:21,091 10983 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:21,093 10985 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[MainShoppingPage]
+2021-10-24 19:09:21,345 11237 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.MainShoppingPage - Viewing cart items
+2021-10-24 19:09:21,501 11393 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions -  Performing Text Compare, Actual [PRODUCTS] Expecting [PRODUCTS]
+2021-10-24 19:09:21,557 11449 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:21,557 11449 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[ProductList]
+2021-10-24 19:09:21,561 11453 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Validate there's a list of shopping items
+2021-10-24 19:09:21,582 11474 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions - Validating if the list is not empty, list size is 6
+2021-10-24 19:09:21,604 11496 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:21,605 11497 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[ProductList]
+2021-10-24 19:09:21,763 11655 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Added item 0 to cart, item name is [Sauce Labs Backpack]
+2021-10-24 19:09:21,764 11656 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Item [Sauce Labs Backpack] added to our temp list 
+2021-10-24 19:09:21,764 11656 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:21,764 11656 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[ProductList]
+2021-10-24 19:09:21,896 11788 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Added item 1 to cart, item name is [Sauce Labs Bolt T-Shirt]
+2021-10-24 19:09:21,897 11789 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.LogInPage - Item [Sauce Labs Bolt T-Shirt] added to our temp list 
+2021-10-24 19:09:21,898 11790 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:21,898 11790 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[MainShoppingPage]
+2021-10-24 19:09:21,900 11792 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.MainShoppingPage - Validating if the cart has item count of 2
+2021-10-24 19:09:21,941 11833 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions -  Performing Text Compare, Actual [2] Expecting [2]
+2021-10-24 19:09:21,987 11879 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:21,987 11879 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[MainShoppingPage]
+2021-10-24 19:09:21,988 11880 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.MainShoppingPage - Viewing cart items
+2021-10-24 19:09:22,080 11972 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,080 11972 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CartList]
+2021-10-24 19:09:22,081 11973 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CartList - Validate cart page
+2021-10-24 19:09:22,097 11989 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions -  Performing Text Compare, Actual [YOUR CART] Expecting [YOUR CART]
+2021-10-24 19:09:22,139 12031 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,139 12031 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CartList]
+2021-10-24 19:09:22,174 12066 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Actual [Sauce Labs Backpack, Sauce Labs Bolt T-Shirt] 
+ Expected [Sauce Labs Backpack, Sauce Labs Bolt T-Shirt]
+2021-10-24 19:09:22,174 12066 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Actual size 2 Expected size 2
+2021-10-24 19:09:22,184 12076 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions - Validating if the list with size 2 has item Sauce Labs Backpack
+2021-10-24 19:09:22,226 12118 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions - Validating if the list with size 2 has item Sauce Labs Bolt T-Shirt
+2021-10-24 19:09:22,247 12139 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CartList - Validating if the cart has size 2
+2021-10-24 19:09:22,257 12149 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions - Validating if the list with size 2 has expected size 2
+2021-10-24 19:09:22,269 12161 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,271 12163 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CartList]
+2021-10-24 19:09:22,271 12163 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CartList - Computing cart total
+2021-10-24 19:09:22,312 12204 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.StringHelperFunctions - Computing sum for [$29.99, $15.99]
+2021-10-24 19:09:22,313 12205 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.StringHelperFunctions - Converting string amount $29.99 to double
+2021-10-24 19:09:22,313 12205 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.StringHelperFunctions - Converting string amount $15.99 to double
+2021-10-24 19:09:22,314 12206 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CartList - Computed cart total 45.98
+2021-10-24 19:09:22,314 12206 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CartList - Checking out cart
+2021-10-24 19:09:22,395 12287 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,395 12287 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CheckoutInfoPage]
+2021-10-24 19:09:22,445 12337 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions -  Performing Text Compare, Actual [CHECKOUT: YOUR INFORMATION] Expecting [CHECKOUT: YOUR INFORMATION]
+2021-10-24 19:09:22,477 12369 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,477 12369 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CheckoutInfoPage]
+2021-10-24 19:09:22,478 12370 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutInfoPage - About to log to enter customer info , using firstName [Sibusiso], lastName [Radebe] and postalCode [4491]
+2021-10-24 19:09:22,479 12371 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutInfoPage - Enter firstName Sibusiso
+2021-10-24 19:09:22,496 12388 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Executing Input Text on element [[ChromeDriver: chrome on MAC (a823ebd487a3de0a0ed02baa40bd454d)] -> id: first-name]
+2021-10-24 19:09:22,574 12466 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutInfoPage - Enter lastName Radebe
+2021-10-24 19:09:22,585 12477 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Executing Input Text on element [[ChromeDriver: chrome on MAC (a823ebd487a3de0a0ed02baa40bd454d)] -> id: last-name]
+2021-10-24 19:09:22,651 12543 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutInfoPage - Enter postalCode 4491
+2021-10-24 19:09:22,662 12554 [32m[TestNG][0;39m [39mDEBUG[0;39m co.za.testing.common.CommonFunctions - Executing Input Text on element [[ChromeDriver: chrome on MAC (a823ebd487a3de0a0ed02baa40bd454d)] -> id: postal-code]
+2021-10-24 19:09:22,716 12608 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,716 12608 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CheckoutInfoPage]
+2021-10-24 19:09:22,717 12609 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutInfoPage - About to click the continue button
+2021-10-24 19:09:22,817 12709 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,818 12710 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CheckoutOverview]
+2021-10-24 19:09:22,869 12761 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions -  Performing Text Compare, Actual [CHECKOUT: OVERVIEW] Expecting [CHECKOUT: OVERVIEW]
+2021-10-24 19:09:22,909 12801 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,909 12801 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CheckoutOverview]
+2021-10-24 19:09:22,909 12801 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutOverview - About validate the order total
+2021-10-24 19:09:22,931 12823 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.StringHelperFunctions - Converting string amount $45.98 to double
+2021-10-24 19:09:22,931 12823 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.common.CommonFunctions -  Performing Number Compare, Actual [45.98] Expecting [45.98]
+2021-10-24 19:09:22,932 12824 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Getting driver for page
+2021-10-24 19:09:22,932 12824 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.core.AbstractBasePage - Creating page object 	[CheckoutOverview]
+2021-10-24 19:09:22,932 12824 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.page.CheckoutOverview - About to click the checkout button
+2021-10-24 19:09:23,025 12917 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
+2021-10-24 19:09:23,026 12918 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - User wants to shop - Status - PASSED
+2021-10-24 19:09:23,026 12918 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - ------------------------------
+2021-10-24 19:09:23,026 12918 [32m[TestNG][0;39m [34mINFO [0;39m co.za.testing.runner.Hooks - Taking screenshot for scenario [User wants to shop]
+2021-10-24 19:09:25,069 14961 [32m[main][0;39m [34mINFO [0;39m co.za.testing.core.reporter.CucumberReport - ******************Building Report******************

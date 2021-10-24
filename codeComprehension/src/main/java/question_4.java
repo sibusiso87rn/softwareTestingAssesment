@@ -3,40 +3,40 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
-public class question_1 {
+public class question_4 {
 
     // Complete the miniMaxSum function below.
-    static void miniMaxSum(int[] arr) {
+    static void miniMaxSum(long[] arr) {
 
         //Create a sorted array by ascending order, reduce the array to index (0,4)
-        List<Integer> miniMaxSumList = (IntStream.of(arr)
+        List<Long> miniMaxSumList = (LongStream.of(arr)
                 .sorted()
                 .boxed()
                 .collect(Collectors.toCollection(ArrayList::new)))
                 .subList(0,4);
 
         //Create a sorted array by ascending order, reduce the array to index (1,5)
-        List<Integer> maxSumList = (IntStream.of(arr)
+        List<Long> maxSumList = (LongStream.of(arr)
                 .sorted()
                 .boxed()
                 .collect(Collectors.toCollection(ArrayList::new))
                 .subList(1,5));
 
         //Use streams to sum up the results from the reduced list, and use an in built function to sum the results
-        int miniMaxSumResults = miniMaxSumList.stream().reduce(0, Integer::sum);
-        int maxSumResults     = maxSumList.stream().reduce(0, Integer::sum);
+        long miniMaxSumResults = miniMaxSumList.stream().reduce((long)0, Long::sum);
+        long maxSumResults     = maxSumList.stream().reduce((long) 0, Long::sum);
 
-        System.out.println("Our minimum sum is " + miniMaxSumList +
-                           " = " + miniMaxSumResults + " and our maximum sum is "+ maxSumList  +
-                           " = " + maxSumResults + ". \n " + miniMaxSumResults + "\t " + maxSumResults);
+        System.out.println(miniMaxSumResults + " " + maxSumResults);
+
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        int[] arr = new int[5];
+        long[] arr = new long[5];
 
         String[] arrItems = scanner.nextLine().split(" ");
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
