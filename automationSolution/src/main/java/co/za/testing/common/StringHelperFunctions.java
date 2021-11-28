@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class StringHelperFunctions {
@@ -26,5 +27,9 @@ public class StringHelperFunctions {
         logger.info("Converting string amount {} to double",stringAmount);
         return Double.parseDouble(stringAmount.
                 replace("$",""));
+    }
+
+    public static String generateScreenshotName(){
+       return UUID.randomUUID().toString().replace("-","")+".png";
     }
 }

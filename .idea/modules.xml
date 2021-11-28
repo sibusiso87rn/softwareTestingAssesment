@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/automationSolution/automationSolution.iml" filepath="$PROJECT_DIR$/automationSolution/automationSolution.iml" />
-      <module fileurl="file://$PROJECT_DIR$/codeComprehension/codeComprehension.iml" filepath="$PROJECT_DIR$/codeComprehension/codeComprehension.iml" />
       <module fileurl="file://$PROJECT_DIR$/softwareTestingAssessment.iml" filepath="$PROJECT_DIR$/softwareTestingAssessment.iml" />
     </modules>
   </component>

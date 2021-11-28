@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true">
-    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <jsonFormatter
+                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>true</prettyPrint>
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+        </layout>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>UTF-8</charset>
             <Pattern>%d %-4relative %green([%thread]) %highlight(%-5level) %logger{50} - %msg%n</Pattern>
@@ -8,8 +19,7 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/tests.log</file>
-
+        <file>../logs/tests.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>/logs/tests_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -17,17 +27,48 @@
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
-
         <encoder>
             <charset>UTF-8</charset>
             <pattern>%d %-4relative %green([%thread]) %highlight(%-5level) %logger{50} - %msg%n</pattern>
         </encoder>
+
+    </appender>
+
+    <appender name="ASYNC_JSON" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="JSON"/>
+        <queueSize>1</queueSize>
+        <includeCallerData>false</includeCallerData>
+        <neverBlock>true</neverBlock>
+    </appender>
+
+    <appender name="ASYNC_CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="CONSOLE"/>
+        <queueSize>1</queueSize>
+        <includeCallerData>false</includeCallerData>
+        <neverBlock>true</neverBlock>
+    </appender>
+
+    <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="FILE"/>
+        <queueSize>1</queueSize>
+        <includeCallerData>false</includeCallerData>
+        <neverBlock>false</neverBlock>
     </appender>
 
     <logger name="root" level="DEBUG"/>
-    <logger name="co.za.testing" level="DEBUG"/>
-    <root   level="INFO">
-        <appender-ref ref="consoleAppender"/>
-        <appender-ref ref="FILE"/>
+    <logger name="starter.testing" level="DEBUG"/>
+    <logger name="io.netty.*" level="OFF"/>
+
+    <logger name="JSONLOGGER" level="TRACE">
+        <appender-ref ref="ASYNC_JSON" />
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="ASYNC_CONSOLE" />
+        <appender-ref ref="ASYNC_FILE" />
     </root>
+
 </configuration>

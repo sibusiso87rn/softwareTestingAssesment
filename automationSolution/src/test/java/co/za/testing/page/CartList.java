@@ -3,15 +3,20 @@ package co.za.testing.page;
 import co.za.testing.common.CommonFunctions;
 import co.za.testing.common.StringHelperFunctions;
 import co.za.testing.core.AbstractBasePage;
+import co.za.testing.core.bean.DriverCreatedCondition;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
+@Component
+@Conditional(DriverCreatedCondition.class)
 public class CartList extends AbstractBasePage {
 
     @FindBy(css = "span[class='title']")
@@ -90,7 +95,7 @@ public class CartList extends AbstractBasePage {
     }
 
     @Override
-    public CartList waiforPageToLoad() {
+    public CartList waitForPageToLoad() {
         CommonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }

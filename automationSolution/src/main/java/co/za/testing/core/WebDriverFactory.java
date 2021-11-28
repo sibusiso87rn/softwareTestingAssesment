@@ -1,30 +1,29 @@
 package co.za.testing.core;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
-import static co.za.testing.common.CommonFunctions.getFluentWait;
-
+@Component
 public class WebDriverFactory {
 
     private static final Logger logger
             = LoggerFactory.getLogger(WebDriverFactory.class);
 
     private static WebDriverFactory webDriverFactoryInstance     = null;
-    private static final ThreadLocal<WebDriver> webDriverThreadLocal   = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> webDriverThreadLocal         = new ThreadLocal<>();
     private static final ThreadLocal<Properties> driverPropertiesThreadLocal = new ThreadLocal<>();
 
-
     private WebDriverFactory(){
+        driverPropertiesThreadLocal.set(new Properties());
+        driverPropertiesThreadLocal.get().setProperty("driver.created","false");
     }
 
     public static WebDriverFactory getInstance(){
@@ -67,11 +66,11 @@ public class WebDriverFactory {
 
         //Set thread local browser
         webDriverThreadLocal.set(getLocalWebDriverObject(desiredCapabilities));
-
+        driverPropertiesThreadLocal.get().setProperty("driver.created","true");
     }
 
     public void createThreadProperties(Properties driverProperties){
-        //Set thread-local properties
+        logger.info("Setting properties");
         driverPropertiesThreadLocal.set(driverProperties);
     }
 
@@ -89,4 +88,13 @@ public class WebDriverFactory {
         options.merge(capabilities);
         return new ChromeDriver(options);
     }
+
+    public boolean driverCreated(){
+        return Boolean.parseBoolean(getThreadLocalProperties().getProperty("driver.created"));
+    }
+
+    public boolean configsSet(){
+        return Boolean.parseBoolean(getThreadLocalProperties().getProperty("configs.set"));
+    }
+
 }

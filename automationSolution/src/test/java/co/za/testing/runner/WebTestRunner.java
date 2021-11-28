@@ -1,6 +1,6 @@
 package co.za.testing.runner;
 
-import co.za.testing.core.WebDriverFactory;
+import co.za.testing.core.bean.TestBean;
 import co.za.testing.core.reporter.CucumberReport;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.FeatureWrapper;
@@ -8,6 +8,10 @@ import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.*;
 
 import java.util.Properties;
@@ -21,10 +25,16 @@ import java.util.Properties;
         glue        = {""},
         tags        = "@Regression"
 )
-public class WebTestRunner {
+@ContextConfiguration(locations = {"classpath:spring-bean.xml"})
+@Component
+public class WebTestRunner extends AbstractTestNGSpringContextTests {
 
 
     private TestNGCucumberRunner testNGCucumberRunner;
+
+    @Autowired
+    private TestBean testBean;
+
     private static final Logger logger
             = LoggerFactory.getLogger(WebTestRunner.class);
 
@@ -33,7 +43,10 @@ public class WebTestRunner {
     @Parameters({"browser.version","browser"})
     public void setTestNGProperties(String browserVersion,String browser){
         logger.info("Test suit starting");
-        WebDriverFactory.getInstance().createThreadProperties(getTestProperties(browserVersion,browser));
+        testBean.setTestProperties(getTestProperties(browserVersion,browser));
+
+        //Read device details from the testcase on testng xml
+        testBean.setTestProperty("configs.set","true");
     }
 
     @BeforeClass(alwaysRun = true)

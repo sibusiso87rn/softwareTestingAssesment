@@ -13,15 +13,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <cucumber.version>6.10.4</cucumber.version>
-        <testng.version>6.9.9</testng.version>
-        <selenium.version>3.141.59</selenium.version>
-
-        <!-- Needed for allure-maven-plugin to specify report version -->
-        <allure.version>2.13.5</allure.version>
-        <aspectj.version>1.8.4</aspectj.version>
-
+        <cucumber.version>7.0.0</cucumber.version>
+        <testng.version>7.4.0</testng.version>
+        <selenium.version>4.0.0</selenium.version>
+        <spring.version>5.3.13</spring.version>
+        <spring.boot.version>2.5.6</spring.boot.version>
     </properties>
 
     <dependencies>
@@ -50,14 +46,13 @@
         </dependency>
         <!--Cucumber Dependencies-->
 
-    <!--TestNG-->
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>${testng.version}</version>
-    </dependency>
-    <!--TestNG-->
-
+        <!--TestNG-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+        </dependency>
+        <!--TestNG-->
         <!--Hamcrest-->
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -68,7 +63,7 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
-            <version>2.1</version>
+            <version>2.2</version>
             <scope>compile</scope>
         </dependency>
         <!--Hamcrest-->
@@ -77,17 +72,32 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.2.3</version>
+            <version>1.2.7</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>1.2.7</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
+            <version>1.7.32</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback.contrib</groupId>
+            <artifactId>logback-json-classic</artifactId>
+            <version>0.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback.contrib</groupId>
+            <artifactId>logback-jackson</artifactId>
+            <version>0.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version>
         </dependency>
         <!--Logging -->
 
@@ -101,7 +111,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.4.3</version>
+            <version>5.0.2</version>
         </dependency>
         <!--Selenium-->
 
@@ -109,9 +119,53 @@
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.6.0</version>
+            <version>5.6.1</version>
         </dependency>
         <!--Reports-->
+
+        <!--Spring Framework-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+
+
+        <!--Environment Properties-->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.10</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--Environment Properties-->
+
     </dependencies>
 
     <build>

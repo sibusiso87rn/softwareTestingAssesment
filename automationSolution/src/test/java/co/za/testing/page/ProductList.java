@@ -2,15 +2,20 @@ package co.za.testing.page;
 
 import co.za.testing.common.CommonFunctions;
 import co.za.testing.core.AbstractBasePage;
+import co.za.testing.core.bean.DriverCreatedCondition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
+@Conditional(DriverCreatedCondition.class)
 public class ProductList extends AbstractBasePage {
 
     private static final Logger logger
@@ -80,7 +85,7 @@ public class ProductList extends AbstractBasePage {
     }
 
     @Override
-    public ProductList waiforPageToLoad() {
+    public ProductList waitForPageToLoad() {
         return this;
     }
 }

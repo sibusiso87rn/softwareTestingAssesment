@@ -1,18 +1,32 @@
+import co.za.testing.core.bean.ApplicationContext;
+import co.za.testing.core.components.ScenarioContext;
+import co.za.testing.core.bean.DriverCreatedCondition;
 import co.za.testing.page.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+import static co.za.testing.constants.Constants.CART_LIST;
+
+@Component
+@Conditional(DriverCreatedCondition.class)
 public class ShoppingStepdefs {
 
-    private ArrayList<String> cartList = new ArrayList<>();
+    private ScenarioContext scenarioContext  = ApplicationContext.getScenarioContext();
+
     private double expectedCartTotal = 0.0;
+
+    public ShoppingStepdefs(){
+        scenarioContext.setContext(CART_LIST,new ArrayList<>());
+    }
 
     @Given("The user navigates to the Shopping Website")
     public void theUserNavigatesToTheShoppingWebsite() {
-        new LogInPage().waiforPageToLoad();
+        new LogInPage().waitForPageToLoad();
     }
 
     @And("The user enters the username {string} and password {string}")
@@ -32,7 +46,7 @@ public class ShoppingStepdefs {
 
     @And("The user adds item {string} to the shopping cart")
     public void theUserAddsItemToTheShoppingCart(String cartItem) {
-        cartList.addAll(new ProductList().addToCart(Integer.parseInt(cartItem)).getSelectedProductList());
+        scenarioContext.getList(CART_LIST).addAll(new ProductList().addToCart(Integer.parseInt(cartItem)).getSelectedProductList());
     }
 
     @Then("The cart icon displays {string} items on the list")
@@ -52,7 +66,7 @@ public class ShoppingStepdefs {
 
     @And("The user is presented with a correct list of cart items")
     public void theUserIsPresentedWithAListOfCartItems() {
-        new CartList().validateCartItemAvailable(cartList).validateCartSize(2);
+        new CartList().validateCartItemAvailable(scenarioContext.getList(CART_LIST)).validateCartSize(2);
     }
 
     @And("The user clicks checkout button")
@@ -63,14 +77,14 @@ public class ShoppingStepdefs {
     @Then("The user is presented with shopping screen with a list of items to shop")
     public void theUserIsPresentedWithLoginScreenWithAListOfItemsToShop() {
         new MainShoppingPage()
-                .waiforPageToLoad()
+                .waitForPageToLoad()
                 .validatePage();
         new ProductList().validateTheresShoppingItems();
     }
 
     @And("The user is presented with the checkout info page")
     public void theUserIsPresentedWithTheCheckoutInfoPage() {
-        new CheckoutInfoPage().waiforPageToLoad().validateCheckoutInfoPageTitle();
+        new CheckoutInfoPage().waitForPageToLoad().validateCheckoutInfoPageTitle();
     }
 
     @And("The user enters the customer name {string} the customer surname {string} and the zipcode {string}")
@@ -85,7 +99,7 @@ public class ShoppingStepdefs {
 
     @Then("The user is navigated to the checkout overview page")
     public void theUserIsNavigatedToTheCheckoutOverviewPage() {
-        new CheckoutOverview().waiforPageToLoad().validateCheckoutOverviewPageTitle();
+        new CheckoutOverview().waitForPageToLoad().validateCheckoutOverviewPageTitle();
     }
 
     @And("The pre tax total item price is calculated correctly")
