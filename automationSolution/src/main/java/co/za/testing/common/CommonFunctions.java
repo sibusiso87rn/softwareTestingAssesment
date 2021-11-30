@@ -1,8 +1,7 @@
 package co.za.testing.common;
 
 import co.za.testing.core.WebDriverFactory;
-import co.za.testing.core.aspect.pointcutadvice.annotations.Loggable;
-import org.aspectj.lang.annotation.Around;
+import co.za.testing.aspect.annotations.LogExecutionTime;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +11,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 
 import java.time.Duration;
 import java.util.List;
@@ -24,53 +22,48 @@ import static org.hamcrest.Matchers.*;
 @Component
 public class CommonFunctions {
 
-    private static final int WAIT_TIME = 10;
-    private static final Logger logger
-            = LoggerFactory.getLogger(CommonFunctions.class);
+    private final int WAIT_TIME = 10;
+    private final Logger logger = LoggerFactory.getLogger(CommonFunctions.class);
 
-    @Loggable
-    public static FluentWait getFluentWait(){
+    public FluentWait getFluentWait(){
         return new FluentWait<>(WebDriverFactory.getInstance().getThreadLocalWebDriver())
                 .withTimeout(Duration.ofSeconds(WAIT_TIME))
                 .pollingEvery(Duration.ofMillis(1000))
                 .ignoring(NoSuchElementException.class);
     }
 
-    @Loggable
-    public static void waitElementClickable(WebElement webElement){
+    public void waitElementClickable(WebElement webElement){
         getFluentWait().until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-    @Around("@annotation(co.za.testing.core.aspect.LogExecutionTime)")
-    public static void clickElement(WebElement webElement){
+    @LogExecutionTime
+    public void clickElement(WebElement webElement){
         waitElementClickable(webElement);
         webElement.click();
     }
 
-    @Loggable
-    public static void input(WebElement webElement,String inputText){
+    @LogExecutionTime
+    public void input(WebElement webElement,String inputText){
         logger.debug("Executing Input Text on element {}",webElement.toString());
         webElement.sendKeys(inputText);
     }
 
-    public static void clickElement(By selector){
+    public void clickElement(By selector){
         clickElement(getDriver().findElement(selector));
     }
 
-    @Loggable
-    public static void validateText(WebElement element, String expectedText){
+    public void validateText(WebElement element, String expectedText){
         logger.info(" Performing Text Compare, Actual ["+element.getText()+"] Expecting [" + expectedText+"]");
         getFluentWait().until(ExpectedConditions.visibilityOf(element));
         assertThat(element.getText(), is(equalTo(expectedText)));
     }
-    @Loggable
-    public static void compareNumber(double actual, double expected){
+
+    public void compareNumber(double actual, double expected){
         logger.info(" Performing Number Compare, Actual ["+actual+"] Expecting ["+expected+"]");
         assertThat(actual, comparesEqualTo(expected));
     }
 
-    @Loggable
-    public static void validateListContains(List<WebElement> collection,String expectedItem) {
+    public void validateListContains(List<WebElement> collection,String expectedItem) {
         logger.info("Validating if the list with size {} has item {}",collection.size(),expectedItem);
         assertThat(collection.stream().
                         map(WebElement::getText)
@@ -78,16 +71,14 @@ public class CommonFunctions {
                 hasItem(expectedItem));
     }
 
-    @Loggable
-    public static List<String> getListElementText(List<WebElement> collection){
+    public List<String> getListElementText(List<WebElement> collection){
         return collection
                 .stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
 
-    @Loggable
-    public static void validateListContains(List<WebElement> collection,List<String> expectedItemList) {
+    public void validateListContains(List<WebElement> collection,List<String> expectedItemList) {
         List<String> actualItemList = collection
                 .stream()
                 .map(WebElement::getText)
@@ -97,19 +88,17 @@ public class CommonFunctions {
         expectedItemList.forEach(expectedItem -> validateListContains(collection,expectedItem));
     }
 
-    @Loggable
-    public static void validateListNotEmpty(List<WebElement> collection) {
+    public void validateListNotEmpty(List<WebElement> collection) {
         logger.info("Validating if the list is not empty, list size is {}", collection.size());
         assertThat("List is empty ", collection.toArray(), is(arrayWithSize(greaterThan(0))));
     }
 
-    @Loggable
-    public static void validateListHasSize(List<WebElement> collection, int expectedSize) {
+    public void validateListHasSize(List<WebElement> collection, int expectedSize) {
         logger.info("Validating if the list with size {} has expected size {}", collection.size(),expectedSize);
         assertThat(collection, hasSize(expectedSize));
     }
 
-    private static WebDriver getDriver(){
+    private WebDriver getDriver(){
         return WebDriverFactory.getInstance().getThreadLocalWebDriver();
     }
 

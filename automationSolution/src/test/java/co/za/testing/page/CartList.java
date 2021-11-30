@@ -1,16 +1,14 @@
 package co.za.testing.page;
 
-import co.za.testing.common.CommonFunctions;
 import co.za.testing.common.StringHelperFunctions;
 import co.za.testing.core.AbstractBasePage;
+import co.za.testing.aspect.annotations.Entity;
 import co.za.testing.core.bean.DriverCreatedCondition;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +16,7 @@ import java.util.List;
 
 @Component
 @Conditional(DriverCreatedCondition.class)
+@Entity
 public class CartList extends AbstractBasePage {
 
     @FindBy(css = "span[class='title']")
@@ -32,12 +31,9 @@ public class CartList extends AbstractBasePage {
     @FindBy(css = "button[class='btn btn_action btn_medium checkout_button']")
     private WebElement btnCheckout;
 
-    @Autowired
-    private CommonFunctions commonFunctions;
-
     private double cartTotal = 0.0;
 
-    private static final Logger logger
+    private final Logger logger
             = LoggerFactory.getLogger(CartList.class);
 
     private WebElement getHdrPageTitle() {
@@ -58,18 +54,18 @@ public class CartList extends AbstractBasePage {
 
     public CartList validateCartListPage(){
         logger.info("Validate cart page");
-        commonFunctions.validateText(getHdrPageTitle(),"YOUR CART");
+        getCommonFunction().validateText(getHdrPageTitle(),"YOUR CART");
         return this;
     }
 
     public CartList validateCartItemAvailable(List<String> expectedItems){
-        commonFunctions.validateListContains(getLblItemName(),expectedItems);
+        getCommonFunction().validateListContains(getLblItemName(),expectedItems);
         return this;
     }
 
     public CartList validateCartSize(int expectedCartSize){
         logger.info("Validating if the cart has size {}",expectedCartSize);
-        commonFunctions.validateListHasSize(getLblItemName(),expectedCartSize);
+        getCommonFunction().validateListHasSize(getLblItemName(),expectedCartSize);
         return this;
     }
 
@@ -77,7 +73,7 @@ public class CartList extends AbstractBasePage {
 
         logger.info("Computing cart total");
 
-        List<String> cartTotalList = CommonFunctions.
+        List<String> cartTotalList = getCommonFunction().
                 getListElementText(getLblItemPrice());
 
         cartTotal = StringHelperFunctions.computeListTotal(cartTotalList);
@@ -94,13 +90,13 @@ public class CartList extends AbstractBasePage {
 
     public CartList checkOut(){
         logger.info("Checking out cart");
-        commonFunctions.clickElement(getBtnCheckout());
+        getCommonFunction().clickElement(getBtnCheckout());
         return this;
     }
 
     @Override
     public CartList waitForPageToLoad() {
-        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        getCommonFunction().getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }

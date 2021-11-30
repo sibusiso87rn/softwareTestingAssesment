@@ -1,5 +1,5 @@
 import co.za.testing.core.bean.ApplicationContext;
-import co.za.testing.core.components.ScenarioContext;
+import co.za.testing.common.ScenarioContext;
 import co.za.testing.core.bean.DriverCreatedCondition;
 import co.za.testing.page.*;
 import io.cucumber.java.en.And;

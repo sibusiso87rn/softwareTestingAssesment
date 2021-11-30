@@ -16,9 +16,8 @@ import org.springframework.stereotype.Component;
 @Conditional(DriverCreatedCondition.class)
 public class LogInPage extends AbstractBasePage {
 
-    private static final Logger logger
+    private final Logger logger
             = LoggerFactory.getLogger(LogInPage.class);
-
 
     @FindBy(className = "login_logo")
     private WebElement imgPageLogo;
@@ -31,10 +30,6 @@ public class LogInPage extends AbstractBasePage {
 
     @FindBy(id = "login-button")
     private WebElement btnLogin;
-
-    @Autowired
-    private CommonFunctions commonFunctions;
-
 
     private WebElement getImgPageLogo() {
         return imgPageLogo;
@@ -55,31 +50,30 @@ public class LogInPage extends AbstractBasePage {
     @Override
     public LogInPage waitForPageToLoad() {
         logger.info("Waiting for page to load");
-        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getImgPageLogo()));
+        getCommonFunction().getFluentWait().until(ExpectedConditions.visibilityOf(getImgPageLogo()));
         return this;
     }
 
     public LogInPage enterUserNameAndPassword(String username,String password){
         logger.info("About to log on user, using Username [{}] and Password [{}]",username,password);
-
         logger.info("Enter username {}",username);
-        commonFunctions.input(getTxtUsername(),username);
+        getCommonFunction().input(getTxtUsername(),username);
 
         logger.info("Enter password {}",password);
-        commonFunctions.input(getTxtPassword(),password);
+        getCommonFunction().input(getTxtPassword(),password);
 
         return this;
     }
 
     public LogInPage clickLogInButton(){
         logger.info("About to click the login button");
-        commonFunctions.clickElement(getBtnLogin());
+        getCommonFunction().clickElement(getBtnLogin());
         return this;
     }
 
     public LogInPage isOnLogonPage(){
         logger.info("Validate if we are on the login screen");
-        commonFunctions.waitElementClickable(getBtnLogin());
+        getCommonFunction().waitElementClickable(getBtnLogin());
         return this;
     }
 

@@ -1,6 +1,7 @@
 package co.za.testing.core.bean;
 
-import co.za.testing.core.components.ScenarioContext;
+import co.za.testing.common.CommonFunctions;
+import co.za.testing.common.ScenarioContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -19,6 +20,7 @@ public class ApplicationContext implements ApplicationContextAware {
     private static org.springframework.context.ApplicationContext CONTEXT;
     private static final String TEST_BEAN_NAME  = "testBean";
     private static final String SCENARIOCONTEXT = "scenarioContext";
+    private static final String COMMONFUNCTIONS = "commonFunctions";
 
 
     private static final Logger logger = LoggerFactory.getLogger(ApplicationContext.class);
@@ -63,14 +65,16 @@ public class ApplicationContext implements ApplicationContextAware {
 
     }
 
-    //Gets the test driver singleton from the context
     public static TestBean getTestBean(){
         return  (TestBean) ApplicationContext.getBean(TEST_BEAN_NAME);
     }
 
-    //Gets the test driver singleton from the context
     public static ScenarioContext getScenarioContext(){
         return  (ScenarioContext) ApplicationContext.getBean(SCENARIOCONTEXT);
+    }
+
+    public static CommonFunctions getCommonFunctions(){
+        return  (CommonFunctions) ApplicationContext.getBean(COMMONFUNCTIONS);
     }
 
     public static Object getComponent(Class clazz){

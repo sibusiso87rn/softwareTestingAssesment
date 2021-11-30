@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-
 @Component
 @Conditional(DriverCreatedCondition.class)
 public class CheckoutOverview extends AbstractBasePage {
@@ -31,10 +29,7 @@ public class CheckoutOverview extends AbstractBasePage {
     @FindBy(id = "finish")
     private WebElement btnFinish;
 
-    @Autowired
-    private CommonFunctions commonFunctions;
-
-    private static final Logger logger
+    private final Logger logger
             = LoggerFactory.getLogger(CheckoutOverview.class);
 
     private WebElement getHdrPageTitle() {
@@ -50,7 +45,7 @@ public class CheckoutOverview extends AbstractBasePage {
     }
 
     public CheckoutOverview validateCheckoutOverviewPageTitle(){
-        commonFunctions.validateText(getHdrPageTitle(),"CHECKOUT: OVERVIEW");
+        getCommonFunction().validateText(getHdrPageTitle(),"CHECKOUT: OVERVIEW");
         return this;
     }
 
@@ -60,20 +55,20 @@ public class CheckoutOverview extends AbstractBasePage {
 
     public CheckoutOverview clickFinishButton(){
         logger.info("About to click the checkout button");
-        commonFunctions.clickElement(getBtnFinish());
+        getCommonFunction().clickElement(getBtnFinish());
         return this;
     }
 
     public CheckoutOverview validateChargedAmount(double expectedTotal){
         logger.info("About validate the order total");
         String currentTotal = getLblTotalWithoutTax().getText().replace("Item total: ","");
-        commonFunctions.compareNumber(StringHelperFunctions.getDoubtAmount(currentTotal),expectedTotal);
+        getCommonFunction().compareNumber(StringHelperFunctions.getDoubtAmount(currentTotal),expectedTotal);
         return this;
     }
 
     @Override
     public CheckoutOverview waitForPageToLoad() {
-        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        getCommonFunction().getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }

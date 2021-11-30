@@ -1,4 +1,4 @@
-package co.za.testing.core.components;
+package co.za.testing.common;
 
 
 import org.springframework.context.annotation.Scope;

@@ -1,4 +1,4 @@
-package co.za.testing.core.aspect.pointcutadvice.annotations;
+package co.za.testing.aspect.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

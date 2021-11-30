@@ -19,11 +19,8 @@ import java.util.List;
 @Conditional(DriverCreatedCondition.class)
 public class ProductList extends AbstractBasePage {
 
-    private static final Logger logger
+    private final Logger logger
             = LoggerFactory.getLogger(LogInPage.class);
-
-    @Autowired
-    private CommonFunctions commonFunctions;
 
     private static int addedItems = 0;
 
@@ -59,7 +56,7 @@ public class ProductList extends AbstractBasePage {
 
     public ProductList validateTheresShoppingItems(){
         logger.info("Validate there's a list of shopping items");
-        commonFunctions.validateListNotEmpty(getLblItemName());
+        getCommonFunction().validateListNotEmpty(getLblItemName());
         return this;
     }
 
@@ -74,7 +71,7 @@ public class ProductList extends AbstractBasePage {
             cartItem = getDriver().findElement(By.xpath("//button[@id='"+attribute+"']/parent::div/preceding-sibling::div/a")).getText();
         }
 
-        CommonFunctions.clickElement(getBtnAddToCart().get(index));
+        getCommonFunction().clickElement(getBtnAddToCart().get(index));
         logger.info("Added item {} to cart, item name is [{}]", index,cartItem);
 
         selectedProductList.add(cartItem);

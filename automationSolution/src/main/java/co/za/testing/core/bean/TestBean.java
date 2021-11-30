@@ -1,5 +1,6 @@
 package co.za.testing.core.bean;
 
+import co.za.testing.aspect.annotations.LogExecutionTime;
 import co.za.testing.core.WebDriverFactory;
 import co.za.testing.core.interfaces.IEnvironmentProperties;
 import org.aeonbits.owner.ConfigFactory;
@@ -39,6 +40,7 @@ public class TestBean {
         getWebDriver().quit();
     }
 
+    @LogExecutionTime
     public void createWebDriver(){
         try {
             logger.info("Creating driver");

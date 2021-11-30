@@ -12,21 +12,22 @@
 	    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 	">
     <context:component-scan base-package="co.za.testing" />
+    <context:annotation-config />
 
     <bean id="springApplicationContext" class="co.za.testing.core.bean.ApplicationContext"/>
     <bean id="testBean"                 class="co.za.testing.core.bean.TestBean"/>
-    <bean id="doBeforeAspect"           class="co.za.testing.core.aspect.logger.AdderBeforeAspect" />
-    <bean id="doAfterAspect"            class="co.za.testing.core.aspect.logger.AdderAfterAspect" />
-    <bean id="doAfterThrowingAspect"    class="co.za.testing.core.aspect.logger.AdderAfterThrowAspect" />
-    <bean id="doAfterReturningAspect"   class="co.za.testing.core.aspect.logger.AdderAfterReturnAspect" />
-    <bean id="doAroundAspect"           class="co.za.testing.core.aspect.logger.AdderAroundAspect" />
-
+    <bean id="performanceMeter"        class="co.za.testing.aspect.performance.PerformanceAspect"/>
+    <bean id="doBeforeAspect"           class="co.za.testing.aspect.logger.AdderBeforeAspect" />
+    <bean id="doAfterAspect"            class="co.za.testing.aspect.logger.AdderAfterAspect" />
+    <bean id="doAfterThrowingAspect"    class="co.za.testing.aspect.logger.AdderAfterThrowAspect" />
+    <bean id="doAfterReturningAspect"   class="co.za.testing.aspect.logger.AdderAfterReturnAspect" />
+    <bean id="doAroundAspect"           class="co.za.testing.aspect.logger.AdderAroundAspect" />
 
     <aop:config>
-        <aop:aspect id="aspects" ref="doAfterAspect">
-            <aop:pointcut id="pointCutAfter"
-                          expression="execution(* co.za.testing.common.CommonFunctions+.*(..))" />
-            <aop:after method="afterAdvice" pointcut-ref="pointCutAfter" />
+        <aop:aspect id="aspects" ref="performanceMeter">
+            <aop:pointcut id="measurePerformance"
+                          expression="@annotation(co.za.testing.aspect.annotations.LogExecutionTime)" />
+            <aop:around method="measureMethodExecutionTime" pointcut-ref="measurePerformance" />
         </aop:aspect>
     </aop:config>
 

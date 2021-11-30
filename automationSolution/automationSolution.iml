@@ -158,7 +158,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.13" level="project" />
-    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.10" level="project" />
-    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.6" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: org.aeonbits.owner:owner:1.0.12" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.9.7" level="project" />
   </component>
 </module>

@@ -25,4 +25,3 @@ Feature: Shopping
     Examples:
       | username     | password   |customerName|customerSurname|customerZipcode|
       |standard_user |secret_sauce|Sibusiso    |Radebe         |4491           |
-

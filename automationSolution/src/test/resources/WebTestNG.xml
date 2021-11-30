@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Regression" thread-count="1" parallel="tests">
+<suite name="Regression" thread-count="2" parallel="tests">
     <test name="Regression">
         <parameter name="browser.version" value="83.0.4103.61"/>
         <parameter name="browser"    value="chrome"/>

@@ -22,10 +22,7 @@ public class MainShoppingPage extends AbstractBasePage {
     @FindBy(css = "a[class='shopping_cart_link']")
     private WebElement lnkCart;
 
-    @Autowired
-    private CommonFunctions commonFunctions;
-
-    private static final Logger logger
+    private final Logger logger
             = LoggerFactory.getLogger(MainShoppingPage.class);
 
     private WebElement getHdrPageTitle() {
@@ -38,25 +35,25 @@ public class MainShoppingPage extends AbstractBasePage {
 
     public MainShoppingPage validatePage(){
         logger.info("Viewing cart items");
-        commonFunctions.validateText(getHdrPageTitle(),"PRODUCTS");
+        getCommonFunction().validateText(getHdrPageTitle(),"PRODUCTS");
         return this;
     }
 
     public MainShoppingPage viewCartItems(){
         logger.info("Viewing cart items");
-        commonFunctions.clickElement(getLnkCart());
+        getCommonFunction().clickElement(getLnkCart());
         return this;
     }
 
     public MainShoppingPage validateCartItemCount(int expectedCount){
         logger.info("Validating if the cart has item count of {}",expectedCount);
-        commonFunctions.validateText(lnkCart,Integer.toString(expectedCount));
+        getCommonFunction().validateText(lnkCart,Integer.toString(expectedCount));
         return this;
     }
 
     @Override
     public MainShoppingPage waitForPageToLoad() {
-        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        getCommonFunction().getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }

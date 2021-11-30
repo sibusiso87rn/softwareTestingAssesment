@@ -1,20 +1,22 @@
-package co.za.testing.core.aspect.pointcutadvice;
+package co.za.testing.aspect.logger;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
 
 @Component
 @Aspect
 public class LoggingAspect {
 
-    private static Logger logger = Logger.getLogger(LoggingAspect.class.getName());
+    private final Logger logger
+            = LoggerFactory.getLogger(LoggingAspect.class);
 
     private ThreadLocal<SimpleDateFormat> sdf = new ThreadLocal<SimpleDateFormat>() {
         @Override
@@ -24,12 +26,8 @@ public class LoggingAspect {
     };
 
 
-    @Pointcut("within(co.za.testing..*) && @annotation(co.za.testing.core.aspect.pointcutadvice.annotations.Loggable)")
+    @Pointcut("within(co.za.testing..*) && @annotation(co.za.testing.aspect.annotations.Loggable)")
     public void loggableMethods() {
-    }
-
-    @Pointcut("within(co.za.testing..*) && @args(co.za.testing.core.aspect.pointcutadvice.annotations.Entity)")
-    public void methodsAcceptingEntities() {
     }
 
     @Before("repositoryMethods()")
@@ -44,8 +42,4 @@ public class LoggingAspect {
         logger.info("Executing method: " + methodName);
     }
 
-    @Before("methodsAcceptingEntities()")
-    public void logMethodAcceptionEntityAnnotatedBean(JoinPoint jp) {
-        logger.info("Accepting beans with @Entity annotation: " + jp.getArgs()[0]);
-    }
 }

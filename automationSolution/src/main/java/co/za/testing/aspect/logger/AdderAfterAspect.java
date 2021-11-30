@@ -1,4 +1,4 @@
-package co.za.testing.core.aspect.logger;
+package co.za.testing.aspect.logger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package co.za.testing.core.aspect.logger;
+package co.za.testing.aspect.logger;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.slf4j.Logger;
@@ -8,7 +8,8 @@ import java.util.Arrays;
 
 public class AdderAroundAspect {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger
+            = LoggerFactory.getLogger(AdderAroundAspect.class);
 
     public Object aroundAdvice(final ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("Arguments passed to method are: " + Arrays.toString(joinPoint.getArgs()));
