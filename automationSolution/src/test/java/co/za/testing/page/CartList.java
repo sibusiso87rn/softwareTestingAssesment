@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
@@ -30,6 +31,9 @@ public class CartList extends AbstractBasePage {
 
     @FindBy(css = "button[class='btn btn_action btn_medium checkout_button']")
     private WebElement btnCheckout;
+
+    @Autowired
+    private CommonFunctions commonFunctions;
 
     private double cartTotal = 0.0;
 
@@ -54,18 +58,18 @@ public class CartList extends AbstractBasePage {
 
     public CartList validateCartListPage(){
         logger.info("Validate cart page");
-        CommonFunctions.validateText(getHdrPageTitle(),"YOUR CART");
+        commonFunctions.validateText(getHdrPageTitle(),"YOUR CART");
         return this;
     }
 
     public CartList validateCartItemAvailable(List<String> expectedItems){
-        CommonFunctions.validateListContains(getLblItemName(),expectedItems);
+        commonFunctions.validateListContains(getLblItemName(),expectedItems);
         return this;
     }
 
     public CartList validateCartSize(int expectedCartSize){
         logger.info("Validating if the cart has size {}",expectedCartSize);
-        CommonFunctions.validateListHasSize(getLblItemName(),expectedCartSize);
+        commonFunctions.validateListHasSize(getLblItemName(),expectedCartSize);
         return this;
     }
 
@@ -90,13 +94,13 @@ public class CartList extends AbstractBasePage {
 
     public CartList checkOut(){
         logger.info("Checking out cart");
-        CommonFunctions.clickElement(getBtnCheckout());
+        commonFunctions.clickElement(getBtnCheckout());
         return this;
     }
 
     @Override
     public CartList waitForPageToLoad() {
-        CommonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +32,9 @@ public class LogInPage extends AbstractBasePage {
     @FindBy(id = "login-button")
     private WebElement btnLogin;
 
+    @Autowired
+    private CommonFunctions commonFunctions;
+
 
     private WebElement getImgPageLogo() {
         return imgPageLogo;
@@ -51,7 +55,7 @@ public class LogInPage extends AbstractBasePage {
     @Override
     public LogInPage waitForPageToLoad() {
         logger.info("Waiting for page to load");
-        CommonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getImgPageLogo()));
+        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getImgPageLogo()));
         return this;
     }
 
@@ -59,23 +63,23 @@ public class LogInPage extends AbstractBasePage {
         logger.info("About to log on user, using Username [{}] and Password [{}]",username,password);
 
         logger.info("Enter username {}",username);
-        CommonFunctions.input(getTxtUsername(),username);
+        commonFunctions.input(getTxtUsername(),username);
 
         logger.info("Enter password {}",password);
-        CommonFunctions.input(getTxtPassword(),password);
+        commonFunctions.input(getTxtPassword(),password);
 
         return this;
     }
 
     public LogInPage clickLogInButton(){
         logger.info("About to click the login button");
-        CommonFunctions.clickElement(getBtnLogin());
+        commonFunctions.clickElement(getBtnLogin());
         return this;
     }
 
     public LogInPage isOnLogonPage(){
         logger.info("Validate if we are on the login screen");
-        CommonFunctions.waitElementClickable(getBtnLogin());
+        commonFunctions.waitElementClickable(getBtnLogin());
         return this;
     }
 

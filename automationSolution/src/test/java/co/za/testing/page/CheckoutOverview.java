@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +31,9 @@ public class CheckoutOverview extends AbstractBasePage {
     @FindBy(id = "finish")
     private WebElement btnFinish;
 
+    @Autowired
+    private CommonFunctions commonFunctions;
+
     private static final Logger logger
             = LoggerFactory.getLogger(CheckoutOverview.class);
 
@@ -46,7 +50,7 @@ public class CheckoutOverview extends AbstractBasePage {
     }
 
     public CheckoutOverview validateCheckoutOverviewPageTitle(){
-        CommonFunctions.validateText(getHdrPageTitle(),"CHECKOUT: OVERVIEW");
+        commonFunctions.validateText(getHdrPageTitle(),"CHECKOUT: OVERVIEW");
         return this;
     }
 
@@ -56,20 +60,20 @@ public class CheckoutOverview extends AbstractBasePage {
 
     public CheckoutOverview clickFinishButton(){
         logger.info("About to click the checkout button");
-        CommonFunctions.clickElement(getBtnFinish());
+        commonFunctions.clickElement(getBtnFinish());
         return this;
     }
 
     public CheckoutOverview validateChargedAmount(double expectedTotal){
         logger.info("About validate the order total");
         String currentTotal = getLblTotalWithoutTax().getText().replace("Item total: ","");
-        CommonFunctions.compareNumber(StringHelperFunctions.getDoubtAmount(currentTotal),expectedTotal);
+        commonFunctions.compareNumber(StringHelperFunctions.getDoubtAmount(currentTotal),expectedTotal);
         return this;
     }
 
     @Override
     public CheckoutOverview waitForPageToLoad() {
-        CommonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }

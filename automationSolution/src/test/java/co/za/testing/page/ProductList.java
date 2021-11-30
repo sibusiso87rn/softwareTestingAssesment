@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,9 @@ public class ProductList extends AbstractBasePage {
 
     private static final Logger logger
             = LoggerFactory.getLogger(LogInPage.class);
+
+    @Autowired
+    private CommonFunctions commonFunctions;
 
     private static int addedItems = 0;
 
@@ -55,7 +59,7 @@ public class ProductList extends AbstractBasePage {
 
     public ProductList validateTheresShoppingItems(){
         logger.info("Validate there's a list of shopping items");
-        CommonFunctions.validateListNotEmpty(getLblItemName());
+        commonFunctions.validateListNotEmpty(getLblItemName());
         return this;
     }
 

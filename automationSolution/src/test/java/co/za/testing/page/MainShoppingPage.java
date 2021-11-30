@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,8 @@ public class MainShoppingPage extends AbstractBasePage {
     @FindBy(css = "a[class='shopping_cart_link']")
     private WebElement lnkCart;
 
+    @Autowired
+    private CommonFunctions commonFunctions;
 
     private static final Logger logger
             = LoggerFactory.getLogger(MainShoppingPage.class);
@@ -35,25 +38,25 @@ public class MainShoppingPage extends AbstractBasePage {
 
     public MainShoppingPage validatePage(){
         logger.info("Viewing cart items");
-        CommonFunctions.validateText(getHdrPageTitle(),"PRODUCTS");
+        commonFunctions.validateText(getHdrPageTitle(),"PRODUCTS");
         return this;
     }
 
     public MainShoppingPage viewCartItems(){
         logger.info("Viewing cart items");
-        CommonFunctions.clickElement(getLnkCart());
+        commonFunctions.clickElement(getLnkCart());
         return this;
     }
 
     public MainShoppingPage validateCartItemCount(int expectedCount){
         logger.info("Validating if the cart has item count of {}",expectedCount);
-        CommonFunctions.validateText(lnkCart,Integer.toString(expectedCount));
+        commonFunctions.validateText(lnkCart,Integer.toString(expectedCount));
         return this;
     }
 
     @Override
     public MainShoppingPage waitForPageToLoad() {
-        CommonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +30,9 @@ public class CheckoutInfoPage extends AbstractBasePage {
 
     @FindBy(id = "continue")
     private WebElement btnContinue;
+
+    @Autowired
+    private CommonFunctions commonFunctions;
 
     private static final Logger logger
             = LoggerFactory.getLogger(CheckoutInfoPage.class);
@@ -54,7 +58,7 @@ public class CheckoutInfoPage extends AbstractBasePage {
     }
 
     public CheckoutInfoPage validateCheckoutInfoPageTitle(){
-        CommonFunctions.validateText(getHdrPageTitle(),"CHECKOUT: YOUR INFORMATION");
+        commonFunctions.validateText(getHdrPageTitle(),"CHECKOUT: YOUR INFORMATION");
         return this;
     }
 
@@ -62,25 +66,25 @@ public class CheckoutInfoPage extends AbstractBasePage {
         logger.info("About to log to enter customer info , using firstName [{}], lastName [{}] and postalCode [{}]",firstName,lastName,postalCode);
 
         logger.info("Enter firstName {}",firstName);
-        CommonFunctions.input(getTxtFirstName(),firstName);
+        commonFunctions.input(getTxtFirstName(),firstName);
 
         logger.info("Enter lastName {}",lastName);
-        CommonFunctions.input(getTxtLastName(),lastName);
+        commonFunctions.input(getTxtLastName(),lastName);
 
         logger.info("Enter postalCode {}",postalCode);
-        CommonFunctions.input(getTxtPostalCode(),postalCode);
+        commonFunctions.input(getTxtPostalCode(),postalCode);
         return this;
     }
 
     public CheckoutInfoPage clickContinueButton(){
         logger.info("About to click the continue button");
-        CommonFunctions.clickElement(getBtnContinue());
+        commonFunctions.clickElement(getBtnContinue());
         return this;
     }
 
     @Override
     public CheckoutInfoPage waitForPageToLoad() {
-        CommonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
+        commonFunctions.getFluentWait().until(ExpectedConditions.visibilityOf(getHdrPageTitle()));
         return this;
     }
 }
