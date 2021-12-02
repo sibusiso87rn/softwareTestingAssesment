@@ -59,8 +59,9 @@
     </appender>
 
     <logger name="root" level="DEBUG"/>
-    <logger name="starter.testing" level="DEBUG"/>
-    <logger name="io.netty.*" level="OFF"/>
+    <logger name="co.za.testing" level="DEBUG"/>
+    <logger name="io.netty.*"       level="OFF"/>
+    <logger name="ch.qos.logback.*" level="OFF"/>
 
     <logger name="JSONLOGGER" level="TRACE">
         <appender-ref ref="ASYNC_JSON" />

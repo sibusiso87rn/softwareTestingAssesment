@@ -4,7 +4,7 @@ import org.aeonbits.owner.Config;
 
 //Reads the system properties and looks for the "environment" property
 @Config.Sources({
-        "classpath:default.properties"
+        "classpath:application.properties"
 })
 
 //Service Properties

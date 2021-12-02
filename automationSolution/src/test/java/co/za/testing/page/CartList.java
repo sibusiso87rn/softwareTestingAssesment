@@ -2,7 +2,6 @@ package co.za.testing.page;
 
 import co.za.testing.common.StringHelperFunctions;
 import co.za.testing.core.AbstractBasePage;
-import co.za.testing.aspect.annotations.Entity;
 import co.za.testing.core.bean.DriverCreatedCondition;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +15,6 @@ import java.util.List;
 
 @Component
 @Conditional(DriverCreatedCondition.class)
-@Entity
 public class CartList extends AbstractBasePage {
 
     @FindBy(css = "span[class='title']")
@@ -86,7 +84,6 @@ public class CartList extends AbstractBasePage {
     public double getCartTotal() {
         return cartTotal;
     }
-
 
     public CartList checkOut(){
         logger.info("Checking out cart");

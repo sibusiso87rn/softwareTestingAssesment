@@ -1,5 +1,6 @@
 package co.za.testing.common;
 
+import co.za.testing.aspect.annotations.LogWebElement;
 import co.za.testing.core.WebDriverFactory;
 import co.za.testing.aspect.annotations.LogExecutionTime;
 import org.openqa.selenium.By;
@@ -42,9 +43,13 @@ public class CommonFunctions {
         webElement.click();
     }
 
+    @LogWebElement
+    public WebElement getWebElement(WebElement webElement){
+      return webElement;
+    }
+
     @LogExecutionTime
     public void input(WebElement webElement,String inputText){
-        logger.debug("Executing Input Text on element {}",webElement.toString());
         webElement.sendKeys(inputText);
     }
 

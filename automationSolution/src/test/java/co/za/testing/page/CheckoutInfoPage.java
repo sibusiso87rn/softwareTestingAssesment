@@ -1,6 +1,5 @@
 package co.za.testing.page;
 
-import co.za.testing.common.CommonFunctions;
 import co.za.testing.core.AbstractBasePage;
 import co.za.testing.core.bean.DriverCreatedCondition;
 import org.openqa.selenium.WebElement;
